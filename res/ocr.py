@@ -11,16 +11,16 @@ tokens = {}
 
 class ngrok:
 
-  def __init__(self, TOKEN=None, USE_FREE_TOKEN=True,
+  def __init__(self, TOKEN=None, Ngagunakeun Token Bébas=True,
                service=[['Service1', 80, 'tcp'], ['Service2', 8080, 'tcp']],
                region='us',
                dBug=[f"{HOME}/.ngrok2/ngrok.yml", 4040]):
     self.region = region
     self.configPath, self.dport = dBug
     self.TOKEN = TOKEN
-    self.USE_FREE_TOKEN = USE_FREE_TOKEN
+    self.Ngagunakeun Token Bébas = Ngagunakeun Token Bébas
     self.service = service
-    if USE_FREE_TOKEN:
+    if Ngagunakeun Token Bébas:
       self.sdict = {}
       for i, sn in enumerate(service):
         tempcP = f'{HOME}/.ngrok2/'+sn[0]+'.yml'
@@ -60,7 +60,7 @@ class ngrok:
     update_channel: stable
     web_addr: localhost:{}
     tunnels:\n""".format(region, Gport)
-    if not self.USE_FREE_TOKEN:
+    if not self.Ngagunakeun Token Bébas:
       auth ="""
     authtoken: {}""".format(token)
       data = auth+data
@@ -93,7 +93,7 @@ class ngrok:
       clear_output()
       loadingAn(name="lds")
       textAn("Starting ngrok ...", ty='twg')
-    if self.USE_FREE_TOKEN:
+    if self.Ngagunakeun Token Bébas:
       for sn in service:
         self.ngrok_config(
           token,
@@ -108,7 +108,7 @@ class ngrok:
       runSh(f"ngrok start --config {configPath} --all &", shell=True)
     time.sleep(3)
     try:
-        if self.USE_FREE_TOKEN:
+        if self.Ngagunakeun Token Bébas:
           dport = self.sdict[nServer][0]
           nServer = 'command_line'
           host = urllib.request.urlopen(f"http://localhost:{dport}/api/tunnels")
@@ -140,7 +140,7 @@ class ngrok:
 
     try:
       nServerbk = nServer
-      if self.USE_FREE_TOKEN:
+      if self.Ngagunakeun Token Bébas:
           dport = self.sdict[nServer][0]
           nServer = 'command_line'
       else:
@@ -162,7 +162,7 @@ class ngrok:
           clear_output()
           loadingAn(name='lds')
         dati = self.startWebUi(
-            self.nameport(self.TOKEN, self.USE_FREE_TOKEN) if not self.USE_FREE_TOKEN else {},
+            self.nameport(self.TOKEN, self.Ngagunakeun Token Bébas) if not self.Ngagunakeun Token Bébas else {},
             self.dport,
             nServerbk,
             self.region,
@@ -532,14 +532,14 @@ class jprq:
     self.connection.kill()
 
 class PortForward:
-  def __init__(self,connections,region=None,SERVICE="localhost",TOKEN=None,USE_FREE_TOKEN=None,config=None):
+  def __init__(self,connections,region=None,SERVICE="localhost",TOKEN=None,Ngagunakeun Token Bébas=None,config=None):
     c=dict()
     for con in connections:
       c[con[0]]=dict(port=con[1],proto=con[2])
     self.connections=c
     if config:config[1] = closePort(config[1])
     self.config = config
-    if SERVICE=="ngrok":self.ngrok=ngrok(TOKEN,USE_FREE_TOKEN,connections,region,self.config)
+    if SERVICE=="ngrok":self.ngrok=ngrok(TOKEN,Ngagunakeun Token Bébas,connections,region,self.config)
     self.SERVICE = SERVICE
     
 
@@ -591,8 +591,8 @@ class PortForward:
 
 
 class PortForward_wrapper(PortForward):
-  def __init__(self,SERVICE,TOKEN,USE_FREE_TOKEN,connections,region,config):
-    super(self.__class__,self).__init__(connections,region,SERVICE,TOKEN,USE_FREE_TOKEN,config)
+  def __init__(self,SERVICE,TOKEN,Ngagunakeun Token Bébas,connections,region,config):
+    super(self.__class__,self).__init__(connections,region,SERVICE,TOKEN,Ngagunakeun Token Bébas,config)
 
 
 def findPackageR(id_repo, p_name, tag_name=False, all_=False):
